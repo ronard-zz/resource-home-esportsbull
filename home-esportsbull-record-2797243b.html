@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息聚点 · 电竞牛</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fde5c2 0%, #f9c78f 40%, #f3a96e 85%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #2d241b;
+        }
+
+        .card {
+            max-width: 860px;
+            width: 100%;
+            background: #fffbf5;
+            border-radius: 40px 40px 28px 28px;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 20px 40px rgba(140, 80, 30, 0.18), 0 8px 16px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease;
+            margin: 1.5rem 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 540;
+            letter-spacing: -0.01em;
+            color: #3f2c1e;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(135deg, #b5612c, #8a4b22);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sub-headline {
+            font-size: 1.05rem;
+            color: #6b4f38;
+            border-left: 4px solid #e6904e;
+            padding-left: 1rem;
+            margin: 0.5rem 0 1.8rem 0;
+            font-weight: 380;
+        }
+
+        .lead {
+            font-size: 1.12rem;
+            background: #f9ede2;
+            padding: 1.2rem 1.6rem;
+            border-radius: 28px;
+            margin-bottom: 2rem;
+            color: #3b2a1d;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.6rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .feature-item {
+            background: #fdf6ef;
+            padding: 1.2rem 1.2rem 1.2rem 1.6rem;
+            border-radius: 24px;
+            border-left: 6px solid #d98646;
+            transition: background 0.15s;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            color: #5b3d29;
+        }
+
+        .feature-item p {
+            font-size: 0.93rem;
+            color: #4b3a2d;
+        }
+
+        .scene-note {
+            background: #f1e2d4;
+            border-radius: 36px;
+            padding: 1.4rem 2rem;
+            margin: 2rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.5rem 0.8rem;
+        }
+
+        .scene-note strong {
+            color: #7f512f;
+            font-weight: 560;
+        }
+
+        .faq-mini {
+            margin: 2.2rem 0 1.2rem;
+        }
+
+        .faq-mini details {
+            background: #fff6ec;
+            padding: 0.8rem 1.4rem;
+            border-radius: 40px;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            border: 1px solid #eddccc;
+            transition: background 0.1s;
+        }
+
+        .faq-mini details[open] {
+            background: #f7e9dc;
+        }
+
+        .faq-mini summary {
+            font-weight: 520;
+            color: #4f3625;
+            padding: 0.2rem 0;
+            font-size: 0.98rem;
+        }
+
+        .faq-mini p {
+            margin-top: 0.5rem;
+            padding-left: 0.4rem;
+            color: #4d3b2c;
+            font-size: 0.93rem;
+        }
+
+        .cta-sentence {
+            text-align: center;
+            margin: 2.8rem 0 0.6rem;
+            font-size: 1.05rem;
+            border-top: 1px solid #e6d2c0;
+            padding-top: 2rem;
+        }
+
+        .cta-sentence a {
+            display: inline-block;
+            background: #f1d3b8;
+            color: #3d2b1c;
+            text-decoration: none;
+            font-weight: 520;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            transition: background 0.2s, box-shadow 0.2s;
+            margin: 0 0.25rem;
+            box-shadow: 0 2px 6px rgba(170, 110, 50, 0.15);
+            border: 1px solid #e1c2a8;
+        }
+
+        .cta-sentence a:hover {
+            background: #e3bc9a;
+            box-shadow: 0 4px 10px rgba(150, 80, 30, 0.2);
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #6d5a4a;
+            text-align: center;
+            opacity: 0.75;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 1.8rem 1.2rem;
+                border-radius: 28px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .feature-grid {
+                gap: 1rem;
+            }
+            .scene-note {
+                flex-direction: column;
+                padding: 1rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+
+    <h1>信息对照 · 延伸阅读</h1>
+    <div class="sub-headline">从一次日常查询开始</div>
+
+    <p class="lead">
+        打开一个页面，往往只是起点。无论你在跟踪赛况、比对数据还是梳理知识点，一个结构清晰的信息锚点能让后续的延伸更有效率。<br>
+        以下内容围绕信息组织和快速对照展开，可与 <a href="https://home-esportsbull.com" style="background:transparent; padding:0; border:none; box-shadow:none; color:#9a653d; text-decoration:underline; font-weight:500;">电竞牛</a> 所搭建的资料脉络配合使用，作为日常检索或主题阅读的辅助索引。
+    </p>
+
+    <div class="feature-grid">
+        <div class="feature-item">
+            <h3>分类筛选</h3>
+            <p>按项目、时间、标签折叠内容，降低信息噪声，聚焦当前关注点。</p>
+        </div>
+        <div class="feature-item">
+            <h3>对照视图</h3>
+            <p>并排展示数据或文本段落，方便横向对比差异与趋势。</p>
+        </div>
+        <div class="feature-item">
+            <h3>引用快照</h3>
+            <p>关键段落可一键摘录，保留来源上下文，便于二次整理。</p>
+        </div>
+        <div class="feature-item">
+            <h3>延伸节点</h3>
+            <p>每个条目附带关联链接或参考索引，不打断阅读流程。</p>
+        </div>
+    </div>
+
+    <div class="scene-note">
+        <span>📋 典型场景：</span>
+        <span><strong>查询</strong> 某个术语的定义与演变 · </span>
+        <span><strong>对照</strong> 不同来源对同一事件的表述 · </span>
+        <span><strong>延伸</strong> 从一条记录跳转到专题页面或外部资料</span>
+    </div>
+
+    <div class="faq-mini">
+        <details>
+            <summary>❓ 如何快速定位之前看过的内容？</summary>
+            <p>可使用浏览器的页面内查找（Ctrl+F）搜索关键词，或借助分类标签缩小范围。部分页面支持锚点跳转，在地址栏追加 #索引名 可直接定位。</p>
+        </details>
+        <details>
+            <summary>❓ 信息卡片可以自定义排列吗？</summary>
+            <p>当前版本按预设分组呈现。若需临时重组，建议将内容复制到本地笔记工具中拖拽排序；我们也在评估可自定义仪表板的功能。</p>
+        </details>
+        <details>
+            <summary>❓ 页面加载后有哪些不需要网络的操作？</summary>
+            <p>所有文字和基础样式均为本地渲染，不依赖实时请求。引用链接、外部图片或脚本功能才需联网，日常浏览及对照无额外限制。</p>
+        </details>
+    </div>
+
+    <div class="cta-sentence">
+        信息检索、对比分析与深度跳转 —— 这一切可以从
+        <a href="https://home-esportsbull.com">电竞牛</a>
+        的某个条目开始，也可以作为你个人知识库的参照节点。
+    </div>
+
+    <div class="footnote">
+        基于日常查阅习惯设计 · 保持低干扰 · 适合作延伸阅读的起点
+    </div>
+</div>
+</body>
+</html>
